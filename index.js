@@ -2,11 +2,15 @@ const express = require('express');
 const axios = require('axios');
 require('dotenv').config();
 
+const cors = require('cors');
+
 const app = express();
 const port = 3000;
 
 const apiKey = process.env.EXCHANGE_RATE_API_KEY;
 const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`;
+
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.send("Ceci est mon accueil.");
